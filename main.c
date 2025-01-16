@@ -1,8 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <locale.h>
 
-int main ()
-{
+#include "JuicyFactory.c"
+#include "JuicyFactory.h"
+
+int main() {
+	setlocale(LC_ALL, "");
 	
-	return 0;
+    Fila * filaPA = criarFila();
+    Fila * filaPB = criarFila();
+    menu(filaPA, filaPB);
+
+    destruirFila(filaPA);
+    destruirFila(filaPB);
+    return 0;
 }
