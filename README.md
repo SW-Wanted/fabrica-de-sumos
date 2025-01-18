@@ -41,19 +41,6 @@ Siga os passos abaixo para instalar e executar o projeto:
    ```bash
    git clone https://github.com/SW-WANTED/fabrica-de-sumos.git
    ```
-2. Acesse o diretório do projeto:
-   ```bash
-   cd fabrica-de-sumos
-   ```
-3. Compile o código-fonte:
-   ```bash
-   gcc -o fabrica fabrica_de_sumos.c -lm
-   ```
-4. Execute o programa:
-   ```bash
-   ./fabrica
-   ```
-
 ---
 
 ## 🛠️ Como Usar
