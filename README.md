@@ -77,9 +77,26 @@ Contribuições são bem-vindas! Siga as etapas abaixo:
    ```
 5. Abra um pull request no GitHub.
 
-## ✨ Colaboradores✨
+## ️ Professor (a)
+Este projeto foi desenvolvido no âmbito da disciplina de **Estrutura de Dados I** na [ISPTEC](https://www.isptec.co.ao/).
+*    [Sílvia António](silvia.antonio@isptec.co.ao)
+
+## ✨ Estudantes✨
 Os desenvolvedores deste projecto de estrutura de dados são:
 
-*    [Emanuel dos Santos](https://github.com/SW-Wanted)
-*    [Carlos Tchípia](https://github.com/Carlos-Tchipia)
-*    [Abel Canas](https://github.com/Abel0207)
+<div align="center">
+<a href="https://github.com/SW-Wanted">
+  <img src="https://github.com/SW-Wanted.png?size=50" alt="Emanuel dos Santos" width="50" height="50">
+</a>
+Emanuel dos Santos<br>
+  
+<a href="https://github.com/Carlos-Tchipia">
+  <img src="https://github.com/Carlos-Tchipia.png?size=50" alt="Carlos Tchípia" width="50" height="50">
+</a>
+Carlos Tchípia<br>
+
+<a href="https://github.com/Abel0207">
+  <img src="https://github.com/Abel0207.png?size=50" alt="Abel Canas" width="50" height="50">
+</a>
+Abel Canas<br>
+</div>
