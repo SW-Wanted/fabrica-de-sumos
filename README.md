@@ -11,7 +11,6 @@ Este projeto simula o funcionamento de uma fábrica de sumos, utilizando conceit
 - [Instalação](#🚀-instalação)
 - [Como Usar](#🛠️-como-usar)
 - [Contribuições](#🤝-contribuições)
-- [Licença](#📄-licença)
 - [Contato](#📧-contato)
 
 ---
@@ -96,3 +95,4 @@ Os desenvolvedores deste projecto de estrutura de dados são:
 
 *    [Emanuel dos Santos](https://github.com/SW-Wanted)
 *    [Carlos Tchípia](https://github.com/Carlos-Tchipia)
+*    [Abel Canas](https://github.com/Abel0207)
