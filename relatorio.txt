@@ -9,7 +9,6 @@ Total: 0
 Lucro previsto:
 Tipo A: 0,00
 Tipo B: 0,00
-Prejuízo:
+Prejuizo:
 Tipo A: 0,00
 Tipo B: 0,00
-

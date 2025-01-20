@@ -2,10 +2,9 @@
 #include <stdlib.h>
 
 #include "Fila.h"
-#include "Pilha.h"
 #include "JuicyFactory.h"
 
-// Fun��es Auxiliares
+// Funcoes auxiliares
 Pacote criarPacote(char tipo, float peso)
 {
     Pacote pacote = {tipo, peso, 1};
@@ -23,7 +22,7 @@ int validarPacote(Pacote pacote, char tipoEsperado)
     return 0;
 }
 
-// Op��o 1: Inser��o manual
+// Opcao 1: Insercao manual
 void inserirPacoteManual(Fila *filaPA, Fila *filaPB)
 {
     char tipo;
@@ -49,45 +48,60 @@ void inserirPacoteManual(Fila *filaPA, Fila *filaPB)
     }
     else
     {
-        printf("Tipo de pacote inv�lido!\n");
-        // TODO: Adicionar uma vari�vel contadora de preju�zos
+        printf("Tipo de pacote invalido!\n");
+        // TODO: Adicionar uma variavel contadora de prejuizos
     }
 }
 
-// Nova função: Inserção automática
+// Nova funcao: Insercao automatica
 void inserirPacoteAutomatico(Fila *filaPA, Fila *filaPB, const char *nomeArquivo)
 {
-    FILE *arquivo = fopen(nomeArquivo, "r");
-    if (arquivo == NULL)
+    FILE *arquivo;
+    do
     {
-        printf("Erro ao abrir o arquivo %s\n", nomeArquivo);
-        return;
-    }
+        arquivo = fopen(nomeArquivo, "r");
+        if (arquivo == NULL)
+        {
+            char opcao;
+            printf("Erro ao abrir o arquivo '%s'. Deseja tentar novamente? (S/N): ", nomeArquivo);
+            scanf(" %c", &opcao);
+            if (opcao == 'N' || opcao == 'n')
+            {
+                printf("Operacao cancelada pelo usuario.\n");
+                return;
+            }
+            printf("Tente novamente: ");
+            scanf("%s", nomeArquivo);
+        }
+    } while (arquivo == NULL);
 
     char tipo;
     float peso;
     while (fscanf(arquivo, " %c %f", &tipo, &peso) == 2)
     {
-        Pacote novoPacote = criarPacote(tipo, peso);
-        if (tipo == 'A')
+        if (validarPacote(criarPacote(tipo, peso), tipo))
         {
-            enfileirar(filaPA, novoPacote);
-        }
-        else if (tipo == 'B')
-        {
-            enfileirar(filaPB, novoPacote);
+            Pacote novoPacote = criarPacote(tipo, peso);
+            if (tipo == 'A')
+            {
+                enfileirar(filaPA, novoPacote);
+            }
+            else if (tipo == 'B')
+            {
+                enfileirar(filaPB, novoPacote);
+            }
+            printf("Pacote do tipo %c com peso %.2f inserido automaticamente a partir do arquivo %s.\n", tipo, peso, nomeArquivo);
         }
         else
         {
-            printf("Tipo de pacote inválido no arquivo!\n");
+            printf("Formato invalido no arquivo! Tipo: %c, Peso: %.2f\n", tipo, peso);
         }
     }
 
     fclose(arquivo);
-    printf("Pacotes inseridos automaticamente a partir do arquivo %s.\n", nomeArquivo);
 }
 
-// Op��o 2: Valida��o
+// Opcao 2: Validacao
 void validarFila(Fila *fila, char tipoEsperado)
 {
     Lista *atual = fila->inicio;
@@ -99,7 +113,7 @@ void validarFila(Fila *fila, char tipoEsperado)
     printf("Fila validada para tipo %c.\n", tipoEsperado);
 }
 
-// Op��o 3: Processar Fila de Enchimento (simples para demonstra��o)
+// Opcao 3: Processar Fila de Enchimento (simples para demonstracao)
 void processarFilaEnchimento(Fila *filaEnchimento, Fila *filaEmbalamento, int limiteGrupo)
 {
     int i;
@@ -132,20 +146,20 @@ void encherPacotes(Fila *filaInicial, Fila *filaEmbalamento, int tempoEnchimento
     }
 }
 
-// Op��o 4: Imprimir filas
+// Opcao 4: Imprimir filas
 void imprimirRelatorios(Fila *filaPA, Fila *filaPB, int descartadosA, int descartadosB, int processadosA, int processadosB)
 {
     FILE *relatorio = fopen("relatorio.txt", "w");
     if (relatorio == NULL)
     {
-        printf("Erro ao criar o arquivo de relatório.\n");
+        printf("Erro ao criar o arquivo de relatorio.\n");
         return;
     }
 
-    float lucroA = processadosA * 1.5;    // Exemplo de cálculo de lucro
-    float lucroB = processadosB * 2.0;    // Exemplo de cálculo de lucro
-    float prejuizoA = descartadosA * 0.5; // Exemplo de cálculo de prejuízo
-    float prejuizoB = descartadosB * 1.0; // Exemplo de cálculo de prejuízo
+    float lucroA = processadosA * 1.5;    // Exemplo de calculo de lucro
+    float lucroB = processadosB * 2.0;    // Exemplo de calculo de lucro
+    float prejuizoA = descartadosA * 0.5; // Exemplo de calculo de prejuizo
+    float prejuizoB = descartadosB * 1.0; // Exemplo de calculo de prejuizo
 
     fprintf(relatorio, "Quantidade de produto embalado:\n");
     fprintf(relatorio, "Tipo A: %d\n", processadosA);
@@ -161,12 +175,12 @@ void imprimirRelatorios(Fila *filaPA, Fila *filaPB, int descartadosA, int descar
     fprintf(relatorio, "Tipo A: %.2f\n", lucroA);
     fprintf(relatorio, "Tipo B: %.2f\n", lucroB);
 
-    fprintf(relatorio, "Prejuízo:\n");
+    fprintf(relatorio, "Prejuizo:\n");
     fprintf(relatorio, "Tipo A: %.2f\n", prejuizoA);
     fprintf(relatorio, "Tipo B: %.2f\n", prejuizoB);
 
     fclose(relatorio);
-    printf("Relatório gerado com sucesso.\n");
+    printf("Relatorio gerado com sucesso.\n");
 }
 
 void encaminharPacotes(Fila *filaEmbalamento, Fila *filaPA, Fila *filaPB)
@@ -182,13 +196,13 @@ void encaminharPacotes(Fila *filaEmbalamento, Fila *filaPA, Fila *filaPB)
         {
             enfileirar(filaPA, pacote);
             countPA++;
-            printf("Pacote do tipo A encaminhado para a máquina PA.\n");
+            printf("Pacote do tipo A encaminhado para a maquina PA.\n");
         }
         else if (pacote.tipo == 'B' && countPB < 4)
         {
             enfileirar(filaPB, pacote);
             countPB++;
-            printf("Pacote do tipo B encaminhado para a máquina PB.\n");
+            printf("Pacote do tipo B encaminhado para a maquina PB.\n");
         }
         else
         {
@@ -196,41 +210,5 @@ void encaminharPacotes(Fila *filaEmbalamento, Fila *filaPA, Fila *filaPB)
             enfileirar(filaEmbalamento, pacote); // Reenfileira o pacote se o limite for atingido
             break;
         }
-    }
-}
-
-// Adicionar a funcionalidade de embalar e empilhar pacotes
-
-void embalarEmpilhar(Fila *filaPA, Fila *filaPB, Pilha *pilhaPA, Pilha *pilhaPB)
-{
-    int limiteA = 6;
-    int limiteB = 4;
-
-    if (filaPA->tamanho >= limiteA)
-    {
-        printf("Embalando %d pacotes do tipo A...\n", limiteA);
-        for (int i = 0; i < limiteA; i++)
-        {
-            Pacote pacote = desenfileirar(filaPA);
-            empilharPacote(pilhaPA, pacote);
-        }
-    }
-    else
-    {
-        printf("Não há pacotes suficientes do tipo A para embalar.\n");
-    }
-
-    if (filaPB->tamanho >= limiteB)
-    {
-        printf("Embalando %d pacotes do tipo B...\n", limiteB);
-        for (int i = 0; i < limiteB; i++)
-        {
-            Pacote pacote = desenfileirar(filaPB);
-            empilharPacote(pilhaPB, pacote);
-        }
-    }
-    else
-    {
-        printf("Não há pacotes suficientes do tipo B para embalar.\n");
     }
 }

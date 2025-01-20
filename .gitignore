@@ -1,2 +1,6 @@
-.vscode/tasks.json
+# Ignorar todos os arquivos .exe
+*.exe
 
+# Ignorar um arquivo específico
+.vscode/tasks.json
+.relatorio.txt

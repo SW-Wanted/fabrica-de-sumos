@@ -15,61 +15,74 @@ struct no
     struct no *prox;
 };
 
-struct fila {
-    Lista * inicio;
-    Lista * fim;
+struct fila
+{
+    Lista *inicio;
+    Lista *fim;
     int tamanho;
 };
 
-Fila * criarFila() {
-    Fila * fila = (Fila*)malloc(sizeof(Fila));
+Fila *criarFila()
+{
+    Fila *fila = (Fila *)malloc(sizeof(Fila));
     fila->inicio = fila->fim = NULL;
     fila->tamanho = 0;
     return fila;
 }
 
-void enfileirar(Fila * fila, Pacote pacote) {
-    Lista * novo = (Lista*)malloc(sizeof(Lista));
+void enfileirar(Fila *fila, Pacote pacote)
+{
+    Lista *novo = (Lista *)malloc(sizeof(Lista));
     novo->pacote = pacote;
     novo->prox = NULL;
-    if (fila->fim == NULL) {
+    if (fila->fim == NULL)
+    {
         fila->inicio = fila->fim = novo;
-    } else {
+    }
+    else
+    {
         fila->fim->prox = novo;
         fila->fim = novo;
     }
     fila->tamanho++;
 }
 
-Pacote desenfileirar(Fila * fila) {
-    if (filaVazia(fila)) {
-        printf("Fila vazia. N�o � poss�vel desenfileirar.\n");
+Pacote desenfileirar(Fila *fila)
+{
+    if (filaVazia(fila))
+    {
+        printf("Fila vazia. Nao e possivel desenfileirar.\n");
         exit(1);
     }
-    Lista * temp = fila->inicio;
+    Lista *temp = fila->inicio;
     Pacote pacote = temp->pacote;
     fila->inicio = fila->inicio->prox;
-    if (fila->inicio == NULL) fila->fim = NULL;
+    if (fila->inicio == NULL)
+        fila->fim = NULL;
     free(temp);
     fila->tamanho--;
     return pacote;
-    
 }
 
-int filaVazia(Fila * fila) {
+int filaVazia(Fila *fila)
+{
     return (fila->tamanho == 0) ? 1 : 0;
 }
 
-void destruirFila(Fila* fila) {
-    while (!filaVazia(fila)) {
+void destruirFila(Fila *fila)
+{
+    while (!filaVazia(fila))
+    {
         desenfileirar(fila);
     }
     free(fila);
 }
 
-void imprimirFila(Fila * fila) {
-    Lista * atual = fila->inicio;
-    while (atual != NULL) {
+void imprimirFila(Fila *fila)
+{
+    Lista *atual = fila->inicio;
+    while (atual != NULL)
+    {
         printf("Pacote [Tipo: %c, Peso: %.2f, Valido: %s]\n",
                atual->pacote.tipo,
                atual->pacote.peso,
