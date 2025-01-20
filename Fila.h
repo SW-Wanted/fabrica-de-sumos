@@ -8,3 +8,4 @@ Pacote desenfileirar(Fila * fila);
 int filaVazia(Fila * fila);
 void destruirFila(Fila * fila);
 void imprimirFila(Fila * fila);
+
