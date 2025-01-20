@@ -12,4 +12,3 @@ Tipo B: 0,00
 Prejuizo:
 Tipo A: 0,00
 Tipo B: 0,00
-

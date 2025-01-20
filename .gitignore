@@ -1,10 +1,8 @@
 # Ignorar todos os arquivos .exe
 *.exe
 
-# Ignorar um arquivo específico
-.vscode/tasks.json
-<<<<<<< HEAD
-.relatorio.txt
-=======
+# Ignorar uma pasta 
+.vscode/
 
->>>>>>> a53313eae0fa86af99ed01928c152b82480ab18c
+# Ignorar um arquivo específico
+relatorio.txt
