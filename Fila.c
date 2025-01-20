@@ -1,20 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Fila.h"
 
-struct pacote {
+struct pacote
+{
     char tipo;
     float peso;
     int valido;
 };
 
-struct no {
+struct no
+{
     Pacote pacote;
-    struct no * prox;
+    struct no *prox;
 };
 
 struct fila {
-    struct no * inicio;
-    struct no * fim;
+    Lista * inicio;
+    Lista * fim;
     int tamanho;
 };
 
@@ -40,7 +43,7 @@ void enfileirar(Fila * fila, Pacote pacote) {
 
 Pacote desenfileirar(Fila * fila) {
     if (filaVazia(fila)) {
-        printf("Fila vazia. Não é possível desenfileirar.\n");
+        printf("Fila vazia. Nï¿½o ï¿½ possï¿½vel desenfileirar.\n");
         exit(1);
     }
     Lista * temp = fila->inicio;
