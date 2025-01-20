@@ -3,4 +3,8 @@
 
 # Ignorar um arquivo específico
 .vscode/tasks.json
+<<<<<<< HEAD
 .relatorio.txt
+=======
+
+>>>>>>> a53313eae0fa86af99ed01928c152b82480ab18c
