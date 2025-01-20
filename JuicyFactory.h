@@ -1,6 +1,6 @@
 #include "Fila.h"
 
-// Menus e op��es
+// Menus e opcoes
 void inserirPacoteManual(Fila * filaPA, Fila * filaPB);
 void inserirPacoteAutomatico(Fila * filaPA, Fila * filaPB, const char * nomeArquivo);
 void validarFila(Fila * fila, char tipoEsperado);

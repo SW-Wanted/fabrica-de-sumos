@@ -53,6 +53,7 @@ Pacote desenfileirar(Fila * fila) {
     free(temp);
     fila->tamanho--;
     return pacote;
+    
 }
 
 int filaVazia(Fila * fila) {
