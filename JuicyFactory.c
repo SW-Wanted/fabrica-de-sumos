@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "Fila.h"
 #include "JuicyFactory.h"
+#include "Pilha.h"
 
 // Funcoes auxiliares
 Pacote criarPacote(char tipo, float peso)
@@ -64,6 +64,7 @@ void inserirPacoteAutomatico(Fila *filaPA, Fila *filaPB, const char *nomeArquivo
         {
             char opcao;
             printf("Erro ao abrir o arquivo '%s'. Deseja tentar novamente? (S/N): ", nomeArquivo);
+            printf("> ");
             scanf(" %c", &opcao);
             if (opcao == 'N' || opcao == 'n')
             {
@@ -113,27 +114,6 @@ void validarFila(Fila *fila, char tipoEsperado)
     printf("Fila validada para tipo %c.\n", tipoEsperado);
 }
 
-// Opcao 3: Processar Fila de Enchimento (simples para demonstracao)
-void processarFilaEnchimento(Fila *filaEnchimento, Fila *filaEmbalamento, int limiteGrupo)
-{
-    int i;
-
-    if (filaEnchimento->tamanho < limiteGrupo)
-    {
-        printf("Nao ha pacotes suficientes para processar.\n");
-        return;
-    }
-
-    printf("Processando grupo de %d pacotes.\n", limiteGrupo);
-    for (i = 0; i < limiteGrupo; i++)
-    {
-        Pacote pacote = desenfileirar(filaEnchimento);
-        enfileirar(filaEmbalamento, pacote);
-    }
-
-    printf("Grupo de pacotes movido para fila de embalamento.\n");
-}
-
 void encherPacotes(Fila *filaInicial, Fila *filaEmbalamento, int tempoEnchimento)
 {
     while (filaInicial->tamanho > 0)
@@ -144,6 +124,42 @@ void encherPacotes(Fila *filaInicial, Fila *filaEmbalamento, int tempoEnchimento
         enfileirar(filaEmbalamento, pacote);
         printf("Pacote do tipo %c com peso %.2f foi enchido e movido para a fila de embalamento.\n", pacote.tipo, pacote.peso);
     }
+}
+
+Fila *embalarPacotes(Fila *filaEmbalamento, int limite, int tempoProcessamento)
+{
+    if (filaEmbalamento->tamanho < limite)
+    {
+        printf("Nao ha pacotes suficientes para embalar.\n");
+        return NULL;
+    }
+    Fila *embalagem = criarFila();
+    int pacotesEmbalados = 0;
+
+    printf("Embalando os pacotes...\n");
+    while (pacotesEmbalados < limite && filaEmbalamento->tamanho > 0)
+    {
+        Pacote pacote = desenfileirar(filaEmbalamento);
+        enfileirar(embalagem, pacote);
+        printf("Embalando pacote do tipo %c com peso %.2f...\n", pacote.tipo, pacote.peso);
+        Sleep(tempoProcessamento * 1000); // Simula o tempo de embalamento em segundos
+        printf("Pacote do tipo %c com peso %.2f foi embalado.\n", pacote.tipo, pacote.peso);
+        pacotesEmbalados++;
+    }
+    printf("Foram embalados %d pacotes.\n", pacotesEmbalados);
+    return embalagem;
+}
+
+void empilharEmbalagem(Pilha *pilha, Fila *embalagens)
+{
+    if (embalagens == NULL)
+    {
+        printf("Nao ha embalagens para empilhar.\n");
+        return;
+    }
+    printf("Empilhando embalagens...\n");
+    empilhar(pilha, embalagens);
+    printf("Embalagem empilhada com sucesso!\n");
 }
 
 // Opcao 4: Imprimir filas
@@ -181,34 +197,4 @@ void imprimirRelatorios(Fila *filaPA, Fila *filaPB, int descartadosA, int descar
 
     fclose(relatorio);
     printf("Relatorio gerado com sucesso.\n");
-}
-
-void encaminharPacotes(Fila *filaEmbalamento, Fila *filaPA, Fila *filaPB)
-{
-    int countPA = 0;
-    int countPB = 0;
-
-    while (filaEmbalamento->tamanho > 0)
-    {
-        Pacote pacote = desenfileirar(filaEmbalamento);
-
-        if (pacote.tipo == 'A' && countPA < 6)
-        {
-            enfileirar(filaPA, pacote);
-            countPA++;
-            printf("Pacote do tipo A encaminhado para a maquina PA.\n");
-        }
-        else if (pacote.tipo == 'B' && countPB < 4)
-        {
-            enfileirar(filaPB, pacote);
-            countPB++;
-            printf("Pacote do tipo B encaminhado para a maquina PB.\n");
-        }
-        else
-        {
-            printf("Limite de pacotes atingido para o tipo %c.\n", pacote.tipo);
-            enfileirar(filaEmbalamento, pacote); // Reenfileira o pacote se o limite for atingido
-            break;
-        }
-    }
 }

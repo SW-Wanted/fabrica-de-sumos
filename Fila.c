@@ -19,6 +19,7 @@ struct fila
 {
     Lista *inicio;
     Lista *fim;
+    struct fila *prox;
     int tamanho;
 };
 
