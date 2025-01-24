@@ -4,9 +4,11 @@
 
 struct pacote
 {
-    char tipo;
+    int id;
+    char tipo[3]; // Alterado para string
     float peso;
     int valido;
+    int cheio;
 };
 
 struct no
@@ -63,7 +65,6 @@ Pacote desenfileirar(Fila *fila)
     free(temp);
     fila->tamanho--;
     return pacote;
-    
 }
 
 int filaVazia(Fila *fila)
@@ -85,10 +86,12 @@ void imprimirFila(Fila *fila)
     Lista *atual = fila->inicio;
     while (atual != NULL)
     {
-        printf("Pacote [Tipo: %c, Peso: %.2f, Valido: %s]\n",
+        printf("Pacote [ID: %d, Tipo: %s, Peso: %.2f, Valido: %s, Cheio: %s]\n",
+               atual->pacote.id,
                atual->pacote.tipo,
                atual->pacote.peso,
-               atual->pacote.valido ? "Sim" : "Nao");
+               atual->pacote.valido ? "Sim" : "Nao",
+               atual->pacote.cheio ? "Sim" : "Nao");
         atual = atual->prox;
     }
 }

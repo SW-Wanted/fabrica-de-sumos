@@ -12,13 +12,13 @@ Este projeto simula o funcionamento de uma fábrica de sumos, utilizando conceit
 ---
 
 ## 📚 Índice
-- [📖 Introdução](#📖-introdução)
-- [✨ Funcionalidades](#✨-funcionalidades)
-- [✈️ Implementação](#✈️-Implementação)
-- [🚀 Instalação](#🚀-instalação)
-- [🛠️ Como Usar](#🛠️-como-usar)
-- [🤝 Contribuições](#🤝-contribuições)
-- [🎓 Universidade](#🎓-isptec)
+- [📖 Introdução](#-introdução)
+- [✨ Funcionalidades](#-funcionalidades)
+- [✈️ Implementação](#-implementação)
+- [🚀 Instalação](#-instalação)
+- [🛠️ Como Usar](#-como-usar)
+- [🤝 Contribuições](#-contribuições)
+- [🎓 Universidade](#-isptec---instituto-superior-politécnico-de-tecnologia-e-ciências)
 
 ---
 

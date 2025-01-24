@@ -42,16 +42,16 @@ void empilhar(Pilha *pilha, Fila *fila)
     (pilha)->tamanho++;
 }
 
-void desempilhar(Pilha **pilha)
+void desempilhar(Pilha *pilha)
 {
-    if ((*pilha)->topo == NULL)
+    if ((pilha)->topo == NULL)
     {
         printf("Pilha vazia.\n");
         return;
     }
-    Fila *fila = (*pilha)->topo;
-    (*pilha)->topo = (*pilha)->topo->prox;
-    (*pilha)->tamanho--;
+    Fila *fila = (pilha)->topo;
+    (pilha)->topo = (pilha)->topo->prox;
+    (pilha)->tamanho--;
     destruirFila(fila);
 }
 
@@ -77,12 +77,12 @@ void imprimirTamanho(Pilha *pilha)
     printf("Tamanho da pilha: %d\n", pilha->tamanho);
 }
 
-void destuirPilha(Pilha **pilha)
+void destruirPilha(Pilha *pilha)
 {
-    while ((*pilha)->topo != NULL)
+    while ((pilha)->topo != NULL)
     {
         desempilhar(pilha);
     }
-    free(*pilha);
-    *pilha = NULL;
+    free(pilha);
+    pilha = NULL;
 }
