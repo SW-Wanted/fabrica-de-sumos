@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <locale.h>
 #include <windows.h>
 #include <time.h>
 
@@ -390,7 +389,7 @@ void gerarRelatorio(Pilha *pilhaEmbalamentoPA, Pilha *pilhaEmbalamentoPB, int de
     fprintf(ficheiro, " -> Prejuizo geral: %.2f kz\n", prejuizoTotalPA + prejuizoTotalPB);
 
     fclose(ficheiro);
-    printf("Relatorio da simulacao gerado com sucesso no ficheiro 'relatorio_simulacao.txt'.\n");
+    printf("Relatorio da simulacao gerado com sucesso.\n");
 }
 
 int main()
@@ -398,7 +397,6 @@ int main()
     system("cls");
 
     srand(time(NULL)); // Inicializa a seed do gerador de números aleatórios
-    setlocale(LC_ALL, "");
 
     Fila *filaEnchimentoPA, *filaEnchimentoPB, *filaEmbalamentoPA, *filaEmbalamentoPB;
     Maquina *maquinaEnchimentoPA, *maquinaEnchimentoPB, *maquinaEmbalamentoPA, *maquinaEmbalamentoPB;
