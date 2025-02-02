@@ -87,12 +87,16 @@ informação abaixo, sabendo que o Lucro = Venda – custo e Prejuízo se Lucro 
 
 ## 🛠️ Como Usar
 O programa oferece um menu interativo com as seguintes opções:
+![image](https://github.com/user-attachments/assets/6c7690f3-e30b-4a92-9b45-e1df2e776183)
 
-1. **Inserir Pacote**: Adicione manualmente um pacote à fila.
-2. **Validar Pacotes**: Verifique se os pacotes estão dentro dos padrões.
-3. **Processar Fila de Enchimento**: Movimente pacotes de fila.
-4. **Relatórios**: Exiba os dados de produção e resultados.
-5. **Encerrar Simulação**: Finalize o programa.
+1. **Inserir Pacote**: Adicione manualmente ou automáticamente um pacote à fila de enchimento.
+2. **Encher Pacotes**: Enche os pacotes que aguardam na fila de embalamento e move-os para a fila de embalamento.
+3. **Validar Produto**: Verifica se os pacotes da fila de embalamento estão dentro dos padrões, caso contrário, são removidos.
+4. **Encaminhar Pacotes para  Maquina de Embalamento**: Movimenta os pacotes de fila de embalamento para máquina de embalamento.
+5. **Embalar e Empilhar**: Embala todos os pacotes presente na máquina de embalamento, e de seguida, empilha a embalagem.
+6. **Imprimir**: Imprime a fila de enchimento, de embalamento e a pilha de embalagem.
+7. **Terminar Sessão**: Termina a sessão e gera um relatório da simulação da fábrica.
+
 
 ---
 
