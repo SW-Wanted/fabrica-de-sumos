@@ -1,8 +1,0 @@
-# Ignorar todos os arquivos .exe
-*.exe
-
-# Ignorar uma pasta 
-.vscode/
-
-# Ignorar um arquivo específico
-relatorio.txt
