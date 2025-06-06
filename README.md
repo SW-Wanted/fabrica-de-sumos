@@ -122,7 +122,7 @@ O programa oferece um menu interativo com as seguintes opções:
 
 ### 🧑‍🏫 Professor (a):
 Este projeto foi elaborado pela professora:
-- **Sílvia António**: [Email institucional](mailto:silvia.antonio@isptec.co.ao)
+- **Sílvia António**
 
 ### ✨ Estudantes
 Este projeto foi desenvolvido por:
